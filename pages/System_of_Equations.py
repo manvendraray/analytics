@@ -73,20 +73,25 @@ col1, col2 = st.columns(2)
 # ---------- Inputs for Equation 1 ----------
 with col1:
     st.subheader("Equation 1")
-    st.latex(r"a_1 x + b_1 y = c_1")
+
+    # number_inputs FIRST
     a1 = st.number_input("a₁ (coefficient of x)", value=a1, step=1.0, format="%.4f")
     b1 = st.number_input("b₁ (coefficient of y)", value=b1, step=1.0, format="%.4f")
     c1 = st.number_input("c₁ (right-hand side)", value=c1, step=1.0, format="%.4f")
 
+    # dynamic equation preview (uses *current* values)
+    st.latex(rf"{a1:.2f}x + {b1:.2f}y = {c1:.2f}")
+
 # ---------- Inputs for Equation 2 ----------
 with col2:
     st.subheader("Equation 2")
-    st.latex(r"a_2 x + b_2 y = c_2")
+
     a2 = st.number_input("a₂ (coefficient of x)", value=a2, step=1.0, format="%.4f")
     b2 = st.number_input("b₂ (coefficient of y)", value=b2, step=1.0, format="%.4f")
     c2 = st.number_input("c₂ (right-hand side)", value=c2, step=1.0, format="%.4f")
 
-st.markdown("---")
+    st.latex(rf"{a2:.2f}x + {b2:.2f}y = {c2:.2f}")
+
 
 # ---------- Solve system ----------
 eps = 1e-9
