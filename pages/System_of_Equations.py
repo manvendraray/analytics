@@ -109,12 +109,9 @@ if has_unique:
     # metrics-style layout
     colx, coly = st.columns(2)
     with colx:
-        st.metric(label="x", value=f"{x_sol:.4f}")
+        st.metric(label="X", value=f"{x_sol:.4f}")
     with coly:
-        st.metric(label="y", value=f"{y_sol:.4f}")
-
-    # optional: pretty LaTeX line under the metrics
-    st.latex(rf"x \approx {x_sol:.4f}, \quad y \approx {y_sol:.4f}")
+        st.metric(label="Y", value=f"{y_sol:.4f}")
 
 else:
     st.warning(
