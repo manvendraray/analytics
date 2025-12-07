@@ -103,15 +103,25 @@ x_sol, y_sol = None, None
 if has_unique:
     x_sol = (c1 * b2 - c2 * b1) / det
     y_sol = (a1 * c2 - a2 * c1) / det
-    st.success(
-        f"**Solution (intersection point)**  \n"
-        f"x ≈ `{x_sol:.4f}`, y ≈ `{y_sol:.4f}`"
-    )
+
+    st.markdown("### ✅ Solution (intersection point)")
+
+    # metrics-style layout
+    colx, coly = st.columns(2)
+    with colx:
+        st.metric(label="x", value=f"{x_sol:.4f}")
+    with coly:
+        st.metric(label="y", value=f"{y_sol:.4f}")
+
+    # optional: pretty LaTeX line under the metrics
+    st.latex(rf"x \approx {x_sol:.4f}, \quad y \approx {y_sol:.4f}")
+
 else:
     st.warning(
         "No **unique** solution: the lines are parallel or coincide "
         "(no intersection or infinitely many solutions)."
     )
+
 
 # ---------- Build plot ----------
 # choose x-range
@@ -183,3 +193,7 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+
+
+
